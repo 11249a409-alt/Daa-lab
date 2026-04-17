@@ -1,34 +1,28 @@
-
-## **AIM**
-
-To write a C program to find the **shortest path from a source vertex to all other vertices** in a graph using **Dijkstra’s Algorithm**.
+AIM
+To write a C program to find the shortest path from a source vertex to all other vertices in a graph using Dijkstra’s Algorithm.
 
 ---
 
-## **ALGORITHM**
+ALGORITHM
 
-1. Start the program.
-2. Read the number of vertices `n`.
-3. Read the adjacency matrix of the graph.
-4. Read the source vertex.
-5. Initialize:
-
-   * `dist[]` array with infinity
-   * `visited[]` array as 0
-   * Set distance of source = 0
-6. Repeat for all vertices:
-
-   * Select the unvisited vertex with minimum distance
-   * Mark it as visited
-   * Update distances of its adjacent vertices
-7. Display the shortest distances from source to all vertices.
-8. Stop the program.
+1. Start the program
+2. Read the number of vertices n
+3. Read the adjacency matrix of the graph
+4. Read the source vertex
+5. Initialize distance array with infinity and visited array as 0
+6. Set distance of source vertex as 0
+7. Repeat for all vertices
+   select the unvisited vertex with minimum distance
+   mark it as visited
+   update distances of adjacent vertices
+8. Display the shortest distances from source to all vertices
+9. Stop
 
 ---
 
-## **SOURCE CODE**
+SOURCE CODE
 
-```c id="d8k3xm"
+```c id="4p9kzr"
 #include <stdio.h>
 #include <limits.h>
 
@@ -52,14 +46,13 @@ int main()
         {
             scanf("%d", &cost[i][j]);
             if(cost[i][j] == 0 && i != j)
-                cost[i][j] = INT_MAX; // no edge
+                cost[i][j] = INT_MAX;
         }
     }
 
     printf("Enter source vertex (0 to %d): ", n - 1);
     scanf("%d", &src);
 
-    // Initialize arrays
     for(i = 0; i < n; i++)
     {
         dist[i] = INT_MAX;
@@ -68,12 +61,10 @@ int main()
 
     dist[src] = 0;
 
-    // Dijkstra's Algorithm
     for(i = 0; i < n - 1; i++)
     {
         min = INT_MAX;
 
-        // Find minimum distance vertex
         for(j = 0; j < n; j++)
         {
             if(!visited[j] && dist[j] <= min)
@@ -85,7 +76,6 @@ int main()
 
         visited[u] = 1;
 
-        // Update distances
         for(j = 0; j < n; j++)
         {
             if(!visited[j] && cost[u][j] != INT_MAX &&
@@ -97,7 +87,6 @@ int main()
         }
     }
 
-    // Display results
     printf("\nShortest distances from source %d:\n", src);
     for(i = 0; i < n; i++)
     {
@@ -110,9 +99,8 @@ int main()
 
 ---
 
-## ** OUTPUT**
+OUTPUT
 
-```id="6nq8yb"
 Enter number of vertices: 4
 Enter adjacency matrix:
 0 10 0 30
@@ -126,15 +114,9 @@ To vertex 0 = 0
 To vertex 1 = 10
 To vertex 2 = 50
 To vertex 3 = 30
-```
 
 ---
 
-## **RESULT**
+RESULT
 
-The program successfully finds the **shortest path** from the given source vertex to all other vertices using **Dijkstra’s Algorithm**.
-
-* Works only for graphs with **non-negative weights**
-* Time complexity is **O(n²)** using adjacency matrix
-
----
+The program successfully finds the shortest path from the source vertex to all other vertices using Dijkstra’s Algorithm. It works for graphs with non negative edge weights and computes minimum distances efficiently.
