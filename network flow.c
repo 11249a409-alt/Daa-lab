@@ -1,33 +1,28 @@
-## **AIM**
-
-To write a C program to compute the **maximum flow** from a **source vertex to a sink vertex** using a simplified approach based on a **capacity matrix**.
-
----
-
-## **ALGORITHM**
-
-1. Start the program.
-2. Read the number of vertices `n`.
-3. Read the **capacity matrix** of the graph.
-4. Read the **source** and **sink** vertices.
-5. Initialize residual graph same as capacity matrix.
-6. Repeat until no augmenting path exists:
-
-   * Use a simple BFS to find a path from source to sink.
-   * Find the minimum capacity (bottleneck) along the path.
-   * Update residual capacities:
-
-     * Reduce forward edge capacity
-     * Increase backward edge capacity
-   * Add flow to total maximum flow
-7. Display the maximum flow.
-8. Stop the program.
+AIM
+To write a C program to compute the maximum flow from a source vertex to a sink vertex using a simplified approach based on a capacity matrix.
 
 ---
 
-## **SOURCE CODE**
+ALGORITHM
 
-```c id="k7m4qp"
+1. Start the program
+2. Read the number of vertices n
+3. Read the capacity matrix of the graph
+4. Read the source and sink vertices
+5. Initialize residual graph same as capacity matrix
+6. Repeat until no path exists from source to sink
+   use BFS to find a path
+   find minimum capacity in that path
+   update residual graph by reducing forward edge and increasing backward edge
+   add this flow to total flow
+7. Display the maximum flow
+8. Stop
+
+---
+
+SOURCE CODE
+
+```c id="2p7kxn"
 #include <stdio.h>
 #include <limits.h>
 
@@ -39,7 +34,6 @@ int residual[MAX][MAX];
 int visited[MAX];
 int parent[MAX];
 
-// BFS to find augmenting path
 int bfs(int s, int t)
 {
     int queue[MAX], front = 0, rear = 0;
@@ -94,12 +88,10 @@ int main()
     printf("Enter source and sink: ");
     scanf("%d %d", &source, &sink);
 
-    // Ford-Fulkerson method using BFS
     while(bfs(source, sink))
     {
         int path_flow = INT_MAX;
 
-        // Find minimum residual capacity
         for(j = sink; j != source; j = parent[j])
         {
             i = parent[j];
@@ -107,7 +99,6 @@ int main()
                 path_flow = residual[i][j];
         }
 
-        // Update residual capacities
         for(j = sink; j != source; j = parent[j])
         {
             i = parent[j];
@@ -126,9 +117,8 @@ int main()
 
 ---
 
-## **OUTPUT**
+OUTPUT
 
-```id="m2x7vn"
 Enter number of vertices: 4
 Enter capacity matrix:
 0 3 2 0
@@ -137,16 +127,9 @@ Enter capacity matrix:
 0 0 0 0
 Enter source and sink: 0 3
 Maximum flow = 5
-```
 
 ---
 
-## **RESULT**
+RESULT
 
-The program successfully computes the **maximum flow** from source to sink using a simplified **Ford-Fulkerson method**.
-
-* Uses **BFS to find augmenting paths**
-* Updates residual graph dynamically
-* Time complexity depends on number of augmenting paths
-
----
+The program successfully computes the maximum flow from source to sink using a simplified method. It uses BFS to find paths and updates the residual graph to calculate the total flow.
