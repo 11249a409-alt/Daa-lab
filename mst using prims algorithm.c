@@ -1,34 +1,27 @@
-## **AIM**
-
-To write a C program to find the **Minimum Spanning Tree (MST)** of a graph using **Prim’s Algorithm**.
-
----
-
-## **ALGORITHM**
-
-1. Start the program.
-2. Read the number of vertices `n`.
-3. Read the adjacency matrix of the graph.
-4. Initialize:
-
-   * `selected[]` array to track included vertices
-   * Select the first vertex as starting point
-5. Repeat until `n-1` edges are selected:
-
-   * Find the minimum weight edge connecting:
-
-     * a selected vertex
-     * to an unselected vertex
-   * Add this edge to MST
-   * Mark the new vertex as selected
-6. Display the edges of MST and total cost.
-7. Stop the program.
+AIM
+To write a C program to find the Minimum Spanning Tree of a graph using Prim’s Algorithm.
 
 ---
 
-## **SOURCE CODE**
+ALGORITHM
 
-```c id="p4z7mn"
+1. Start the program
+2. Read the number of vertices n
+3. Read the adjacency matrix of the graph
+4. Initialize selected array and mark all vertices as not selected
+5. Select the first vertex as starting point
+6. Repeat until n-1 edges are selected
+   find the minimum edge connecting a selected vertex to an unselected vertex
+   add that edge to the MST
+   mark the new vertex as selected
+7. Display the edges of MST and total cost
+8. Stop
+
+---
+
+SOURCE CODE
+
+```c id="6k3rpt"
 #include <stdio.h>
 #include <limits.h>
 
@@ -53,15 +46,14 @@ int main()
         {
             scanf("%d", &cost[i][j]);
             if(cost[i][j] == 0)
-                cost[i][j] = INT_MAX; // no edge
+                cost[i][j] = INT_MAX;
         }
     }
 
-    // Initialize selected array
     for(i = 0; i < n; i++)
         selected[i] = 0;
 
-    selected[0] = 1; // start from vertex 0
+    selected[0] = 1;
 
     printf("\nEdges in MST:\n");
 
@@ -105,9 +97,8 @@ int main()
 
 ---
 
-## ** OUTPUT**
+OUTPUT
 
-```id="y7q2wl"
 Enter number of vertices: 4
 Enter adjacency matrix:
 0 2 0 6
@@ -120,17 +111,9 @@ Edges in MST:
 1 - 2 : 3
 0 - 3 : 6
 Total cost of MST = 11
-```
 
 ---
 
-## **RESULT**
+RESULT
 
-The program successfully finds the **Minimum Spanning Tree** using **Prim’s Algorithm**.
-
-* It selects edges with minimum weight without forming cycles.
-* Total cost of MST is calculated.
-* Time complexity is **O(n²)** using adjacency matrix.
-
----
-
+The program successfully finds the Minimum Spanning Tree using Prim’s Algorithm. It selects edges with minimum weight and calculates the total cost of the spanning tree.
