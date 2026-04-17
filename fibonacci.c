@@ -1,40 +1,36 @@
-## **AIM**
-
-To write a C program to find the **nth Fibonacci number** using both **recursion** and **iterative method**.
-
----
-
-## **ALGORITHM**
-
-### **Recursive Method**
-
-1. Start the program.
-2. Read the value of `n`.
-3. Define recursive function:
-
-   * If `n == 0`, return 0
-   * If `n == 1`, return 1
-   * Else return `fib(n-1) + fib(n-2)`
-4. Print the result.
-
-### **Iterative Method**
-
-1. Initialize `a = 0`, `b = 1`.
-2. Loop from 2 to `n`:
-
-   * `c = a + b`
-   * Update `a = b`, `b = c`
-3. Print the result.
-4. Stop the program.
+AIM
+To write a C program to find the nth Fibonacci number using both recursion and iterative method.
 
 ---
 
-## **SOURCE CODE**
+ALGORITHM
 
-```c id="f5m2zb"
+Recursive Method
+
+1. Start the program
+2. Read the value of n
+3. Define a recursive function
+   if n == 0 return 0
+   if n == 1 return 1
+   else return fib(n-1) + fib(n-2)
+4. Print the result
+
+Iterative Method
+
+1. Initialize a = 0 and b = 1
+2. Loop from 2 to n
+   c = a + b
+   update a = b and b = c
+3. Print the result
+4. Stop
+
+---
+
+SOURCE CODE
+
+```c id="1z8kqp"
 #include <stdio.h>
 
-// Recursive function
 int fib_recursive(int n)
 {
     if(n == 0)
@@ -45,7 +41,6 @@ int fib_recursive(int n)
         return fib_recursive(n-1) + fib_recursive(n-2);
 }
 
-// Iterative function
 int fib_iterative(int n)
 {
     int a = 0, b = 1, c, i;
@@ -69,8 +64,8 @@ int main()
     printf("Enter n: ");
     scanf("%d", &n);
 
-    printf("Fibonacci (Recursive) = %d\n", fib_recursive(n));
-    printf("Fibonacci (Iterative) = %d\n", fib_iterative(n));
+    printf("Fibonacci using recursion = %d\n", fib_recursive(n));
+    printf("Fibonacci using iteration = %d\n", fib_iterative(n));
 
     return 0;
 }
@@ -78,20 +73,15 @@ int main()
 
 ---
 
-## **SAMPLE OUTPUT**
+OUTPUT
 
-```id="7hz5hs"
 Enter n: 6
-Fibonacci (Recursive) = 8
-Fibonacci (Iterative) = 8
-```
+Fibonacci using recursion = 8
+Fibonacci using iteration = 8
 
 ---
 
-## **RESULT**
+RESULT
 
-The program successfully calculates the **nth Fibonacci number** using both recursive and iterative methods.
-
-* Recursive method is simple but inefficient (**O(2ⁿ)** time complexity).
-* Iterative method is efficient (**O(n)** time complexity).
+The program successfully calculates the nth Fibonacci number using both recursive and iterative methods. The recursive method is simple but slower, while the iterative method is more efficient.
 
