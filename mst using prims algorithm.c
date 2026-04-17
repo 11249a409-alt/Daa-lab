@@ -21,7 +21,7 @@ ALGORITHM
 
 SOURCE CODE
 
-```c id="6k3rpt"
+
 #include <stdio.h>
 #include <limits.h>
 
