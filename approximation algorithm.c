@@ -1,30 +1,26 @@
-## **AIM**
-
-To write a C program to find the **Vertex Cover** of a given **undirected graph** using an **approximation algorithm** based on its adjacency matrix.
-
----
-
-## **ALGORITHM**
-
-1. Start the program.
-2. Read the number of vertices `n`.
-3. Read the adjacency matrix of the graph.
-4. Initialize all vertices as **not included** in the vertex cover.
-5. Repeat for all edges:
-
-   * If an edge `(u, v)` is not covered:
-
-     * Include both `u` and `v` in the vertex cover
-     * Mark all edges connected to `u` and `v` as covered
-6. Continue until all edges are covered.
-7. Display the vertices in the vertex cover.
-8. Stop the program.
+AIM
+To write a C program to find the Vertex Cover of a given undirected graph using an approximation algorithm based on its adjacency matrix.
 
 ---
 
-## **SOURCE CODE**
+ALGORITHM
 
-```c id="v8k3zt"
+1. Start the program
+2. Read the number of vertices n
+3. Read the adjacency matrix of the graph
+4. Initialize all vertices as not included in the vertex cover
+5. Traverse all edges of the graph
+6. If an edge (u, v) is not covered
+   include both u and v in the vertex cover
+7. Mark these vertices as visited
+8. Continue until all edges are covered
+9. Display the vertices in the vertex cover
+10. Stop
+
+---
+
+SOURCE CODE
+
 #include <stdio.h>
 
 #define MAX 10
@@ -49,14 +45,13 @@ int main()
 
     printf("\nApproximate Vertex Cover:\n");
 
-    // Approximation Algorithm
     for(i = 0; i < n; i++)
     {
         for(j = i + 1; j < n; j++)
         {
             if(graph[i][j] == 1)
             {
-                if(!visited[i] && !visited[j])
+                if(visited[i] == 0 && visited[j] == 0)
                 {
                     visited[i] = 1;
                     visited[j] = 1;
@@ -66,17 +61,14 @@ int main()
         }
     }
 
-    printf("\n");
-
     return 0;
 }
 ```
 
 ---
 
-## * OUTPUT**
+OUTPUT
 
-```id="p6x2vn"
 Enter number of vertices: 4
 Enter adjacency matrix:
 0 1 1 0
@@ -86,18 +78,9 @@ Enter adjacency matrix:
 
 Approximate Vertex Cover:
 0 1 2 3
-```
 
 ---
 
-## **RESULT**
+RESULT
 
-The program successfully finds an **approximate vertex cover** for the given undirected graph.
-
-* Uses a **greedy 2-approximation algorithm**
-* The solution may not be optimal but is efficient
-* Time complexity is **O(n²)** using adjacency matrix
-
----
-
-
+The program successfully finds an approximate vertex cover for the given undirected graph using a greedy approach. The result may not always be optimal but it covers all edges efficiently.
