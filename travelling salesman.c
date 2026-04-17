@@ -1,32 +1,30 @@
-## **AIM**
-
-To write a C program to solve the **Travelling Salesman Problem (TSP)** using **recursion** and find the **minimum tour cost** for visiting all cities exactly once and returning to the starting city.
-
----
-
-## **ALGORITHM**
-
-1. Start the program.
-2. Read the number of cities `n`.
-3. Read the cost adjacency matrix.
-4. Create a visited array to track visited cities.
-5. Start from city 0 (starting city).
-6. Use a recursive function:
-
-   * Mark current city as visited.
-   * For each unvisited city:
-
-     * Calculate cost of visiting that city + recursive call.
-   * Return the minimum cost path.
-7. Add the cost to return to the starting city.
-8. Print the minimum tour cost.
-9. Stop the program.
+AIM
+To write a C program to solve the Travelling Salesman Problem using recursion and find the minimum tour cost.
 
 ---
 
-## **SOURCE CODE**
+ALGORITHM
 
-```c id="t6x8pn"
+1. Start the program
+2. Read the number of cities n
+3. Read the cost matrix
+4. Initialize visited array
+5. Start from city 0
+6. Define a recursive function
+   mark current city as visited
+   for each unvisited city
+   calculate cost of going to that city and call function again
+   find minimum among all paths
+   backtrack by marking city as unvisited
+7. After visiting all cities, return to starting city
+8. Print the minimum travelling cost
+9. Stop
+
+---
+
+SOURCE CODE
+
+
 #include <stdio.h>
 #include <limits.h>
 
@@ -36,14 +34,12 @@ int n;
 int cost[MAX][MAX];
 int visited[MAX];
 
-// Recursive function for TSP
 int tsp(int current, int count)
 {
     int i;
     int min_cost = INT_MAX;
     int temp_cost;
 
-    // If all cities visited, return cost to go back to start
     if(count == n && cost[current][0])
     {
         return cost[current][0];
@@ -60,7 +56,7 @@ int tsp(int current, int count)
             if(temp_cost < min_cost)
                 min_cost = temp_cost;
 
-            visited[i] = 0; // backtrack
+            visited[i] = 0;
         }
     }
 
@@ -84,11 +80,10 @@ int main()
         }
     }
 
-    // Initialize visited array
     for(i = 0; i < n; i++)
         visited[i] = 0;
 
-    visited[0] = 1; // start from city 0
+    visited[0] = 1;
 
     result = tsp(0, 1);
 
@@ -100,9 +95,8 @@ int main()
 
 ---
 
-## ** OUTPUT**
+OUTPUT
 
-```id="t6m9rs"
 Enter number of cities: 4
 Enter cost matrix:
 0 10 15 20
@@ -110,15 +104,9 @@ Enter cost matrix:
 15 35 0 30
 20 25 30 0
 Minimum travelling cost = 80
-```
 
 ---
 
-## **RESULT**
+RESULT
 
-The program successfully solves the **Travelling Salesman Problem** using recursion.
-
-* It explores all possible paths (brute force).
-* Finds the **minimum cost** of visiting all cities exactly once and returning to the starting city.
-* Time complexity is **O(n!)**, which is very high for large inputs.
-
+The program successfully solves the Travelling Salesman Problem using recursion. It checks all possible paths and finds the minimum cost to visit all cities and return to the starting point.
