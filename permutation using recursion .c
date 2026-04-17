@@ -1,31 +1,28 @@
-## **AIM**
-
-To write a C program to generate and display all possible **permutations** of a given set of elements using **recursion**.
-
----
-
-## **ALGORITHM**
-
-1. Start the program.
-2. Read the number of elements `n`.
-3. Read the elements into an array.
-4. Define a recursive function to generate permutations:
-
-   * Fix one element at a time.
-   * Swap the current element with the next elements.
-   * Call the function recursively for the remaining elements.
-   * Backtrack (swap back to original position).
-5. When the starting index equals the last index, print the permutation.
-6. Stop the program.
+AIM
+To write a C program to generate and display all possible permutations of a given set of elements using recursion.
 
 ---
 
-## **SOURCE CODE**
+ALGORITHM
 
-```c id="9i3s3u"
+1. Start the program
+2. Read the number of elements n
+3. Read the elements into an array
+4. Define a recursive function
+   fix one element at a time
+   swap current element with other elements
+   call the function recursively for remaining elements
+   swap back to restore original order
+5. If start index equals end index, print the permutation
+6. Stop
+
+---
+
+SOURCE CODE
+
+```c id="7m2kpx"
 #include <stdio.h>
 
-// Function to swap two elements
 void swap(int *a, int *b)
 {
     int temp;
@@ -34,7 +31,6 @@ void swap(int *a, int *b)
     *b = temp;
 }
 
-// Recursive function to generate permutations
 void permute(int arr[], int start, int end)
 {
     int i;
@@ -49,9 +45,9 @@ void permute(int arr[], int start, int end)
     {
         for(i = start; i <= end; i++)
         {
-            swap(&arr[start], &arr[i]);   // Swap
-            permute(arr, start + 1, end); // Recursive call
-            swap(&arr[start], &arr[i]);   // Backtrack
+            swap(&arr[start], &arr[i]);
+            permute(arr, start + 1, end);
+            swap(&arr[start], &arr[i]);
         }
     }
 }
@@ -78,9 +74,8 @@ int main()
 
 ---
 
-## **SAMPLE OUTPUT**
+OUTPUT
 
-```id="c0t9q6"
 Enter number of elements: 3
 Enter elements:
 1 2 3
@@ -91,14 +86,9 @@ All possible permutations are:
 2 3 1
 3 2 1
 3 1 2
-```
 
 ---
 
-## **RESULT**
+RESULT
 
-The program successfully generates all possible **permutations** of the given set of elements using recursion.
-
-* The total number of permutations generated is **n!**
-* The program uses **backtracking** technique with recursion
-
+The program successfully generates all possible permutations of the given elements using recursion. The method uses swapping and backtracking to produce all possible arrangements.
