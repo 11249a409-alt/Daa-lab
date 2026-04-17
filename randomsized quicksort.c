@@ -1,37 +1,28 @@
-
-## **AIM**
-
-To implement **Randomized Quick Sort** using the **divide and conquer technique** by selecting a **random pivot** to improve average performance and avoid worst-case behavior.
+AIM
+To implement Randomized Quick Sort using divide and conquer technique by selecting a random pivot to improve performance.
 
 ---
 
-## **ALGORITHM**
+ALGORITHM
 
-1. Start the program.
-2. Read the number of elements `n`.
-3. Read the array elements.
-4. Apply Quick Sort:
-
-   * Choose a **random pivot** from the array.
-   * Swap it with the last element.
-   * Partition the array:
-
-     * Elements smaller than pivot → left
-     * Elements greater than pivot → right
-5. Recursively apply Quick Sort to left and right subarrays.
-6. Display the sorted array.
-7. Stop the program.
+1. Start the program
+2. Read the number of elements n
+3. Read the array elements
+4. Apply quick sort
+   choose a random pivot
+   swap it with last element
+   partition the array into smaller and larger elements
+5. Recursively apply quick sort on left and right parts
+6. Display the sorted array
+7. Stop
 
 ---
 
-## **SOURCE CODE**
-
-```c id="q9x5rt"
+SOURCE CODE
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
-// Swap function
 void swap(int *a, int *b)
 {
     int temp = *a;
@@ -39,7 +30,6 @@ void swap(int *a, int *b)
     *b = temp;
 }
 
-// Partition function
 int partition(int arr[], int low, int high)
 {
     int pivot = arr[high];
@@ -59,7 +49,6 @@ int partition(int arr[], int low, int high)
     return i + 1;
 }
 
-// Randomized partition
 int randomPartition(int arr[], int low, int high)
 {
     int random = low + rand() % (high - low + 1);
@@ -67,13 +56,11 @@ int randomPartition(int arr[], int low, int high)
     return partition(arr, low, high);
 }
 
-// Quick Sort function
 void quickSort(int arr[], int low, int high)
 {
     if(low < high)
     {
         int pi = randomPartition(arr, low, high);
-
         quickSort(arr, low, pi - 1);
         quickSort(arr, pi + 1, high);
     }
@@ -92,7 +79,6 @@ int main()
         scanf("%d", &arr[i]);
     }
 
-    // Seed random number generator
     srand(time(0));
 
     quickSort(arr, 0, n - 1);
@@ -109,23 +95,16 @@ int main()
 
 ---
 
-## ** OUTPUT**
+OUTPUT
 
-```id="x7m2kp"
 Enter number of elements: 5
 Enter elements:
 5 2 9 1 6
 Sorted array:
 1 2 5 6 9
-```
 
 ---
 
-## **RESULT**
+RESULT
 
-The program successfully implements **Randomized Quick Sort** using the **divide and conquer approach**.
-
-* Random pivot selection helps avoid worst-case scenarios
-* Average time complexity is **O(n log n)**
-* Worst-case complexity is **O(n²)** but occurs rarely
-
+The program successfully implements randomized quick sort using divide and conquer method. Random pivot selection improves average performance and reduces chances of worst case.
