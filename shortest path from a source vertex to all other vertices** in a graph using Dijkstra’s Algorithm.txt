@@ -1,3 +1,27 @@
+AIM
+To write a C program to find the shortest path from a source vertex to all other vertices in a graph using Dijkstra’s Algorithm.
+
+---
+
+ALGORITHM
+
+1. Start the program
+2. Read the number of vertices n
+3. Read the adjacency matrix of the graph
+4. Read the source vertex
+5. Initialize distance array with infinity and visited array as 0
+6. Set distance of source vertex as 0
+7. Repeat for all vertices
+   select the unvisited vertex with minimum distance
+   mark it as visited
+   update distances of adjacent vertices
+8. Display the shortest distances from source to all vertices
+9. Stop
+
+---
+
+SOURCE CODE
+
 #include <stdio.h>
 #include <limits.h>
 
@@ -70,3 +94,27 @@ int main()
 
     return 0;
 }
+
+---
+
+OUTPUT
+
+Enter number of vertices: 4
+Enter adjacency matrix:
+0 10 0 30
+10 0 50 0
+0 50 0 20
+30 0 20 0
+Enter source vertex (0 to 3): 0
+
+Shortest distances from source 0:
+To vertex 0 = 0
+To vertex 1 = 10
+To vertex 2 = 50
+To vertex 3 = 30
+
+---
+
+RESULT
+
+The program successfully finds the shortest path from the source vertex to all other vertices using Dijkstra’s Algorithm. It works for graphs with non negative edge weights and computes minimum distances efficiently.

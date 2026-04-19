@@ -1,28 +1,3 @@
-AIM
-To write a C program to perform linear search on an array of 10000 random numbers and measure the time taken to search for a given key.
-
----
-
-ALGORITHM
-
-1. Start the program
-2. Declare an array of size 10000
-3. Generate random numbers using rand() and store them in the array
-4. Read the key element to be searched
-5. Start the timer using clock()
-6. Traverse the array from index 0 to 9999
-   if element is equal to key, store position and stop
-7. Stop the timer
-8. Calculate time using (end - start) / CLOCKS_PER_SEC
-9. Display whether element is found or not
-10. Print the time taken
-11. Stop
-
----
-
-SOURCE CODE
-
-```c id="8q2lzn"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -68,24 +43,3 @@ int main()
 
     return 0;
 }
-```
-
----
-
-OUTPUT
-
-Enter the element to search: 54321
-Element not found
-Time taken for search: 0.000012 seconds
-
-OR
-
-Enter the element to search: 12345
-Element found at position: 6789
-Time taken for search: 0.000008 seconds
-
----
-
-RESULT
-
-The program successfully performs linear search on an array of 10000 random numbers and measures the time taken. The time increases as the position of the element moves towards the end of the array.

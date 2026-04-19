@@ -1,3 +1,29 @@
+AIM
+To write a C program to solve the Travelling Salesman Problem using recursion and find the minimum tour cost.
+
+---
+
+ALGORITHM
+
+1. Start the program
+2. Read the number of cities n
+3. Read the cost matrix
+4. Initialize visited array
+5. Start from city 0
+6. Define a recursive function
+   mark current city as visited
+   for each unvisited city
+   calculate cost of going to that city and call function again
+   find minimum among all paths
+   backtrack by marking city as unvisited
+7. After visiting all cities, return to starting city
+8. Print the minimum travelling cost
+9. Stop
+
+---
+
+SOURCE CODE
+
 #include <stdio.h>
 #include <limits.h>
 
@@ -64,3 +90,21 @@ int main()
 
     return 0;
 }
+
+---
+
+OUTPUT
+
+Enter number of cities: 4
+Enter cost matrix:
+0 10 15 20
+10 0 35 25
+15 35 0 30
+20 25 30 0
+Minimum travelling cost = 80
+
+---
+
+RESULT
+
+The program successfully solves the Travelling Salesman Problem using recursion. It checks all possible paths and finds the minimum cost to visit all cities and return to the starting point.

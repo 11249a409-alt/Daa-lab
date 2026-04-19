@@ -1,26 +1,3 @@
-AIM
-To write a C program to implement the First Fit Bin Packing algorithm and display the remaining space in each bin after packing all items.
-
----
-
-ALGORITHM
-
-1. Start the program
-2. Read the number of items n
-3. Read the sizes of the items
-4. Read the bin capacity
-5. Initialize all bins with full capacity
-6. For each item
-   check bins from first to last
-   place the item in the first bin where it fits
-   reduce the remaining capacity of that bin
-7. After placing all items, display bin number and remaining space
-8. Stop
-
----
-
-SOURCE CODE
-
 #include <stdio.h>
 
 int main()
@@ -29,6 +6,7 @@ int main()
     int items[50];
     int bin_capacity;
     int bin_rem[50];
+    int bins_used = 0;
 
     printf("Enter number of items: ");
     scanf("%d", &n);
@@ -44,50 +22,28 @@ int main()
 
     for(i = 0; i < n; i++)
     {
-        bin_rem[i] = bin_capacity;
-    }
-
-    for(i = 0; i < n; i++)
-    {
-        for(j = 0; j < n; j++)
+        int placed = 0;
+        for(j = 0; j < bins_used; j++)
         {
             if(bin_rem[j] >= items[i])
             {
                 bin_rem[j] -= items[i];
+                placed = 1;
                 break;
             }
+        }
+        if(!placed)
+        {
+            bin_rem[bins_used] = bin_capacity - items[i];
+            bins_used++;
         }
     }
 
     printf("\nRemaining space in bins:\n");
-    for(i = 0; i < n; i++)
+    for(i = 0; i < bins_used; i++)
     {
-        if(bin_rem[i] != bin_capacity)
-        {
-            printf("Bin %d: %d\n", i + 1, bin_rem[i]);
-        }
+        printf("Bin %d: %d\n", i + 1, bin_rem[i]);
     }
 
     return 0;
 }
-```
-
----
-
-OUTPUT
-
-Enter number of items: 5
-Enter sizes of items:
-4 8 1 4 2
-Enter bin capacity: 10
-
-Remaining space in bins:
-Bin 1: 2
-Bin 2: 2
-Bin 3: 9
-
----
-
-RESULT
-
-The program successfully implements the First Fit Bin Packing algorithm. Each item is placed in the first suitable bin and the remaining space in each bin is displayed after packing.

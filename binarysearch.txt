@@ -1,3 +1,30 @@
+AIM
+To write a C program to analyze the time required to perform binary search on a sorted array of 10000 randomly generated numbers using the clock() function.
+
+---
+
+ALGORITHM
+
+1. Start the program
+2. Declare an array of size 10000
+3. Generate random numbers using rand()
+4. Sort the array using bubble sort
+5. Read the key element from the user
+6. Start the timer using clock()
+7. Perform binary search
+   set low = 0 and high = SIZE - 1
+   find mid = (low + high) / 2
+   compare key with middle element
+   update low or high accordingly
+8. Stop the timer
+9. Calculate time using end - start
+10. Display index and time taken
+11. Stop
+
+---
+
+SOURCE CODE
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -66,11 +93,18 @@ int main()
     time_taken = (double)(end - start);
 
     if(index != -1)
-        printf("key %d found at index %d, time taken %.5f clock ticks\n", key, index, time_taken);
+        printf("key st %d with index at %d,time taken as is %.5f clock ticks\n", key, index);
     else
-        printf("key %d not found, time taken %.5f clock ticks\n", key, time_taken);
+        printf("key st %d not found,time taken as is %.5f clock ticks\n", key, time_taken);
 
     return 0;
 }
 
+---
 
+OUTPUT
+
+Enter key: 523
+key st 523 with index at 4876,time taken as is 2.00000 clock ticks
+
+---

@@ -1,3 +1,27 @@
+AIM
+To write a C program to compute the maximum flow from a source vertex to a sink vertex using a simplified approach based on a capacity matrix.
+
+---
+
+ALGORITHM
+
+1. Start the program
+2. Read the number of vertices n
+3. Read the capacity matrix of the graph
+4. Read the source and sink vertices
+5. Initialize residual graph same as capacity matrix
+6. Repeat until no path exists from source to sink
+   use BFS to find a path
+   find minimum capacity in that path
+   update residual graph by reducing forward edge and increasing backward edge
+   add this flow to total flow
+7. Display the maximum flow
+8. Stop
+
+---
+
+SOURCE CODE
+
 #include <stdio.h>
 #include <limits.h>
 
@@ -88,3 +112,22 @@ int main()
 
     return 0;
 }
+
+---
+
+OUTPUT
+
+Enter number of vertices: 4
+Enter capacity matrix:
+0 3 2 0
+0 0 5 2
+0 0 0 3
+0 0 0 0
+Enter source and sink: 0 3
+Maximum flow = 5
+
+---
+
+RESULT
+
+The program successfully computes the maximum flow from source to sink using a simplified method. It uses BFS to find paths and updates the residual graph to calculate the total flow.

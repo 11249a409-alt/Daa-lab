@@ -1,34 +1,3 @@
-AIM
-To write a C program to find the nth Fibonacci number using both recursion and iterative method.
-
----
-
-ALGORITHM
-
-Recursive Method
-
-1. Start the program
-2. Read the value of n
-3. Define a recursive function
-   if n == 0 return 0
-   if n == 1 return 1
-   else return fib(n-1) + fib(n-2)
-4. Print the result
-
-Iterative Method
-
-1. Initialize a = 0 and b = 1
-2. Loop from 2 to n
-   c = a + b
-   update a = b and b = c
-3. Print the result
-4. Stop
-
----
-
-SOURCE CODE
-
-```c id="1z8kqp"
 #include <stdio.h>
 
 int fib_recursive(int n)
@@ -69,19 +38,4 @@ int main()
 
     return 0;
 }
-```
-
----
-
-OUTPUT
-
-Enter n: 6
-Fibonacci using recursion = 8
-Fibonacci using iteration = 8
-
----
-
-RESULT
-
-The program successfully calculates the nth Fibonacci number using both recursive and iterative methods. The recursive method is simple but slower, while the iterative method is more efficient.
 
